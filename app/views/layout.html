@@ -1,0 +1,72 @@
+<!-- 
+  This is the main layout where you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Extends the layout from /docs/views/template.html -->
+{% extends "prototype-kit-template.njk" %}
+
+<!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+{% block head %}
+  <link href="/css/main.css" rel="stylesheet">
+{% endblock %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  NHS.UK prototype kit
+{% endblock %}
+
+<!-- Edit the header -->
+<!-- Header code examples can be found at https://service-manual.nhs.uk/design-system/components/header -->
+{% block header %}
+  {{ header({
+    "service": {
+        "name": "Additional Pension Calculator",
+        "href": "/"
+      },
+      "showNav": "false",
+      "showSearch": "false"
+    })
+  }}
+
+<div class="beta-banner">
+  <div class="nhsuk-width-container">
+      <p class="nhsuk-phase-banner__content">
+          <strong class="nhsuk-tag nhsuk-phase-banner__content__tag">
+              Beta
+          </strong>
+          <span class="nhsuk-phase-banner__text">
+              This is a new service – your <a class="nhsuk-link" href="https://online1.snapsurveys.com/AdditionalPensionCalculator_Feedback">feedback</a> will help us to improve it.
+</span>
+      </p>
+  </div>
+</div>
+
+{% endblock %}
+
+<!-- Edit the footer -->
+<!-- Footer code examples can be found at https://service-manual.nhs.uk/design-system/components/footer -->
+{% block footer %}
+  {{ footer({
+    "links": [
+      {
+        "URL": "/",
+        "label": "Home"
+      },
+      {
+        "URL": "/clear-data",
+        "label": "Clear Data"
+      }
+    ]
+  })}}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% block scripts %}
+    <!-- Custom JavaScript files can be added to this file -->
+    {% include "includes/scripts.html" %}
+    <!-- For adding page specific JavsScript -->
+    {% block pageScripts %}{% endblock %}
+  {% endblock %}
+{% endblock %}
